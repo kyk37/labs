@@ -1,4 +1,5 @@
 import math
+
 def make_set(data):
     '''
         Create a set from a list of numbers
