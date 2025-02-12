@@ -8,17 +8,17 @@ class Caesar():
     '''
     def __init__(self, shift:int = 0):
         #initialize variables
-        self.key = shift # Prevent shift beyond alphabet  
+        self._key = shift # Prevent shift beyond alphabet  
 
     def set_key(self, value):
         # Set key
-        self.key = value
+        self._key = value
     
     def encrypt(self, text:str):
-        return self._algorithm(text.lower(), self.key)
+        return self._algorithm(text.lower(), self._key)
     
     def decrypt(self, text:str):
-        return self._algorithm(text.lower(), -self.key)
+        return self._algorithm(text.lower(), -self._key)
 
     def _algorithm(self, text:str, key: int):
         # Caesar algorithm. Alphanumerics wrap around.
@@ -66,7 +66,7 @@ def test_function(cipher):
     print("Decrypt rmb &%`^\\ -> ", cipher.decrypt("rmb &%`^\\"))
 
     print("Encrypt Yep this works -> ", cipher.encrypt("Yep this works"))
-
+    print("Encrypt Yep this works -> ", cipher.encrypt("Yep this works"))
 
 if __name__ == "__main__":
     print("Kyle Kessler")
