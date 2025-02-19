@@ -36,12 +36,13 @@ class Potion(Item):
     
     def apply_weapon_boost(self):
         print("Applying weapon boost")
+        #find weapon.
         for item in globals().values():
             print(item, Weapon)
             if isinstance(item, Weapon):# == False: ## Fails to enter this when True
                 print("inside Instance") 
                 for item in item:
-                    item.increase_damage_temporarily(50, 30)
+                    Weapon.increase_damage_temporarily(50, 30)
                 
     @classmethod
     def from_ability(cls, name:str,  type:str, owner:str="", rarity:str="common", description:str=""):
