@@ -70,7 +70,6 @@ class Potion(Item):
     
     def use(self):
         owner = self.get_ownership()
-        print(f"Owner: {owner}")
         if owner and self.used_flag == False:
             print(f"{owner} used {self.name}, and {self.potion_type} increased {self.amount} for {self.duration}s ")
             if self.potion_type == "attack":
@@ -82,19 +81,23 @@ class Potion(Item):
             self.used_flag = True
     
     def apply_weapon_boost(self):
-        print("Applying weapon boost")
         for item in Item.ALL_ITEMS:
             if isinstance(item, Weapon) and item.active:
-                item.increase_damage_temporarily(amount = 50, duration= 3)
+                item.increase_damage_temporarily(amount = self.amount, duration= self.duration)
+
+    def apply_defense_boost(self):
+        for item in Item.ALL_ITEMS:
+            if isinstance(item, Shield) and item.active: 
+                item.increase_defense_temporarily(amount = self.amount, duration= self.duration)
                 
     @classmethod
-    def from_ability(cls, name:str,  type:str,amount =50, duration=30 ,owner:str="", rarity:str="common", description:str=""):
+    def from_ability(cls, name:str,  type:str,amount=50, duration=30 ,owner:str="", rarity:str="common", description:str=""):
         if owner == None or owner == "":
             raise ValueError(f"Invalid Owner, potions don't just appear out of thin air Mr. Potter")
         else:
             return cls(name, type, amount, duration, rarity, owner, description)
 
-            
+
 class Weapon(Item):
     # List is not all inclusive. Too many RPG weapons exist in RPG games x_x
     VALID_WEAPONTYPES = {"bow", "crossbow", "sword", "dagger", "axe", "flail", "polearm", "sling", "stave", "claw",
@@ -171,7 +174,7 @@ class Shield(Item):
             defense_power = self.defense * self.defense_modifier * self.broken_modifier
             print(f"{self.name} is used, blocking {defense_power} damage")
 
-    def increase_damage_temporarily(self, amount, duration):
+    def increase_defense_temporarily(self, amount, duration):
         self.defense += amount
         timer = threading.Timer(duration, self.reset_defense, [amount])
         timer.start()
@@ -196,21 +199,14 @@ if __name__ == "__main__":
     print("No output here at use()")
 
 
-    attack_potion = Potion.from_ability("atk potion tmp", owner='Beleg', type= "attack")
-    print("potion created")
+    attack_potion = Potion.from_ability("atk potion tmp", duration=3, owner='Beleg', type= "attack")
     attack_potion.use()
-    print("potion used")
     attack_potion.use()
     # test_atk_pot = Potion.from_ability("atk potion tmp", type= "attack")
     # test_stew = Potion.from_ability("Grand Pot", "grand", "Beleg")
-    
     
     print(isinstance(long_bow, Item))
     print(isinstance(broken_pot_lid, Shield))
     print(isinstance(attack_potion, Weapon))
     
     
-    print("Test if longbows damage increased")
-    long_bow.use()
-    time.sleep(5)
-    long_bow.use()
