@@ -8,7 +8,7 @@ def tests():
 
     print("____ Starting Personal Tests ______")
     print("Test case 1: Drinking attack potion")
-    wand = Weapon(name = "Superior Wand", rarity="common", damage=1000, weapon_type="wand", description="A well crafted wand")
+    wand = Weapon(name = "Superior Wand", rarity="Common", damage=1000, weapon_type="wand", description="A well crafted wand")
     wand.pick_up("Echo")
     attack_potion = Potion.from_ability("Giants Strength Potion", owner='Echo', type= "attack")
     wand.equip()

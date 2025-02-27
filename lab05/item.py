@@ -1,10 +1,21 @@
-
+from colorama import Fore, Style, init
+init(autoreset=True)  # Resets colors automatically
 
 class Item:
-    VALID_RARITIES =  {"common", "uncommon", "epic", "legendary"}
+    VALID_RARITIES =  {"Common", "Uncommon", "Epic", "Legendary"}
     ALL_ITEMS = [] # list of all items ever created (Note no items are removed from this list)
+    COLORS = {
+        "Common": "\033[0;37m",    # White
+        "Uncommon": "\033[0;32m",  # Green
+        "Epic": "\033[0;35m",      # Purple
+        "Legendary": "\033[0;33m", # Yellow
+        "ownership": "\033[0;34m",  #  Blue
+        "defense": "\033[0;36m",   # Cyan
+        "damage": "\033[0;31m",    # Red
+        "reset": "\033[0m"         # Resets color
+    }
 
-    def __init__(self, name, owner='', rarity="common", description = ""):
+    def __init__(self, name, owner='', rarity="Common", description = ""):
         '''
             Creates an item and adds it to the list of existing items
             Inputs:
@@ -59,5 +70,16 @@ class Item:
         return self.description
     
     def __str__(self):
-        #Returns everything about the item class
-        return f"{self.name} a {self.rarity} item owned by {self._ownership}: {self.description}"
+        '''Returns basic item information'''
+        if self.rarity == "Legendary":
+            rarity = Item.COLORS.get(self.rarity, Item.COLORS["reset"])
+            ownership = Item.COLORS.get("ownership", Item.COLORS["reset"])
+            return f"{self.name}\nRarity: {rarity}✨✨ {self.rarity} Item ✨✨{Item.COLORS["reset"]}\n{self.description} \n{ownership}Owned by:{Item.COLORS["reset"]} {self._ownership}"
+        elif self.rarity =="Epic":
+            rarity = Item.COLORS.get(self.rarity, Item.COLORS["reset"])
+            ownership = Item.COLORS.get("ownership", Item.COLORS["reset"])
+            return f"{rarity}✨ Epic Item ✨{Item.COLORS["reset"]}\n{self.name}\nRarity: {rarity}✨ {self.rarity} Item ✨{Item.COLORS["reset"]}\n{self.description} \n{ownership}Owned by:{Item.COLORS["reset"]} {self._ownership}"
+        else:
+            rarity = Item.COLORS.get(self.rarity, Item.COLORS["reset"])
+            ownership = Item.COLORS.get("ownership", Item.COLORS["reset"])
+            return f"{self.name}\nRarity: {rarity}{self.rarity} Item{Item.COLORS["reset"]}\n{self.description} \n{ownership}Owned by:{Item.COLORS["reset"]} {self._ownership}"
