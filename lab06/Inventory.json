@@ -1,0 +1,80 @@
+{
+    "class": "Inventory",
+    "name": "backpack",
+    "owner": "Beleg",
+    "items": [
+        {
+            "class": "Weapon",
+            "name": "Belthronding",
+            "owner": "Beleg",
+            "rarity": "Legendary",
+            "description": "A mighty bow made of black yew-wood",
+            "damage": 500,
+            "weapon_type": "ranged",
+            "active": false
+        },
+        {
+            "class": "Weapon",
+            "name": "Master Sword",
+            "owner": "Beleg",
+            "rarity": "Legendary",
+            "description": "A sword deserving of only the most skilled swordsman",
+            "damage": 300,
+            "weapon_type": "single-handed",
+            "active": false
+        },
+        {
+            "class": "Potion",
+            "name": "health potion",
+            "owner": "Beleg",
+            "rarity": "Common",
+            "description": "Common Health potion heals +50 HP",
+            "potion_type": "hp",
+            "used": false,
+            "amount": 50,
+            "duration": 30
+        },
+        {
+            "class": "Shield",
+            "name": "wooden lid",
+            "owner": "Beleg",
+            "rarity": "Common",
+            "description": "A lid made of wood, useful in cooking. No one will choose it willingly for a shield",
+            "defense": 5,
+            "broken": true,
+            "shield_type": "shield",
+            "active": false
+        },
+        {
+            "class": "Weapon",
+            "name": "Muramasa",
+            "owner": "Beleg",
+            "rarity": "Legendary",
+            "description": "A cursed axe with dark aura eminating from it's head",
+            "damage": 580,
+            "weapon_type": "double-handed",
+            "active": false
+        },
+        {
+            "class": "Weapon",
+            "name": "Gungnir",
+            "owner": "Beleg",
+            "rarity": "Legendary",
+            "description": "I wonder how Odin lost this...",
+            "damage": 290,
+            "weapon_type": "pike",
+            "active": false
+        },
+        {
+            "class": "Shield",
+            "name": "Round Shield",
+            "owner": "Beleg",
+            "rarity": "Common",
+            "description": "A sturdy shield",
+            "defense": 15,
+            "broken": false,
+            "shield_type": "shield",
+            "active": false
+        }
+    ]
+}
