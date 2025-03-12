@@ -144,15 +144,57 @@ class Weapon(Item):
         return weapon_details
 
     def to_json(self):
-        '''Returns an JSON-encodable object with the classes information and all items stored inside. '''
-        pass
-    
-    def from_json(self):
+        '''Returns an JSON-encodable object with the classes information and all items stored inside.
+                Item class Data:
+                "class" : "Item", 
+                "name": "item name", 
+                "owner": "item_owner", 
+                "rarity":"rarity_level", 
+                "description":"item_description" 
+
+                Weapon Class Data:
+                "damage": "Damage stat amount",
+                "weapon_type": "Type of weapon",
+                "active": "is weapon active" 
+            }  
+            All other items get created and calculated from these items
+        '''
+        json_data = super().to_json()
+        json_data.update({
+            "damage": self.damage,
+            "weapon_type": self.weapon_type,
+            "active":self.active
+        })
+        return json_data
+
+    @classmethod
+    def from_json(cls, json_data):
         """Creates new instances using the data from JSON strings."""
-        pass
+        import json
+        if isinstance(json_data, str):
+            data = json.loads(json_data)
+        else:
+            data = json_data
+        
+        # Extract data
+        name = data.get("name")
+        rarity = data.get("rarity", "Common")
+        description = data.get("description", "")
+        owner = data.get("owner", "")
+        damage = data.get("damage",0)
+        weapon_type = data.get("weapon_type", "sword")
+        active = data.get("active", False)
+        
+        # Create isntance
+        weapon = cls(name=name, rarity=rarity, damage=damage, weapon_type= weapon_type, description=description)
 
-
-
+        # Set ownership and states
+        if owner:
+            weapon.set_ownership(owner)
+        weapon.active = active
+        weapon.weapon_type = weapon_type
+        
+        return weapon
 ###
 #   For future implentation of classes
 #   Just make "attack_move(), and _spin(), _slash(), _thrust(), _shoot() functions"

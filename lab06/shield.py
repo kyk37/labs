@@ -92,9 +92,62 @@ class Shield(Item):
 
 
     def to_json(self):
-        '''Returns an JSON-encodable object with the classes information and all items stored inside. '''
-        pass
+        '''Returns an JSON-encodable object with the classes information and all items stored inside.
+                Item class Data:
+                "class" : "Item", 
+                "name": "item name", 
+                "owner": "item_owner", 
+                "rarity":"rarity_level", 
+                "description":"item_description" 
+
+                Shield Class Data:
+                "defense": "Defense stat amount",
+                "shield_type": "Type of shield", 
+                "broken":"Is the shield in a broken state",
+                "active": self.active
+            }  
+            All other items get created and calculated from these items
+        '''
+        json_data = super().to_json()
+        json_data.update({
+            "defense": self.defense,
+            "broken": self.broken,
+            "shield_type": self.shield_type,
+            "active": self.active 
+        })
+        return json_data
     
-    def from_json(self):
+    @classmethod
+    def from_json(cls, json_data):
         """Creates new instances using the data from JSON strings."""
-        pass
+        import json
+        if isinstance(json_data, str):
+            data = json.loads(json_data)
+        else:
+            data = json_data
+        
+        # Extract Items
+        name = data.get("name")
+        defense = data.get("defense",0)
+        broken = data.get("broken", False)
+        rarity = data.get("rarity","Common")
+        shield_type = data.get("shield_type", "")
+        description = data.get("description", "")
+        owner = data.get("owner", "")
+        active = data.get("active", False)
+
+        # Create Instance
+        shield = cls(
+            name=name, 
+            defense=defense, 
+            broken=broken, 
+            rarity=rarity,
+            shield_type = shield_type,
+            description = description,
+            )
+
+        # Set ownership and equip state
+        if owner:
+            shield.set_ownership(owner)
+        shield.active = active
+        return shield

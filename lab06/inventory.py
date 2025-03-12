@@ -2,10 +2,19 @@ import json
 from weapon import Weapon
 from shield import Shield
 from potion import Potion
+from item import Item
 
 class Inventory:
     USER_INVENTORY = []
     def __init__(self, owner=None):
+        '''
+            Creates an inventory for the user.
+
+            Json Serialization:
+            to_json() : converts the inventory to json format
+            from_json() : recovers json object and recreates it
+            See the designated functions for more information on their use case and structure
+        '''
         # intialize variables
         self.name = "backpack"
         self.owner = owner
@@ -83,9 +92,41 @@ class Inventory:
             "items": [item.to_json() for item in self.items]
         }
     
+    @classmethod
     def from_json(cls, json_data):
         from item import Item
-        """Creates new instances using the data from JSON strings."""
+        """Creates new instances using the data from JSON strings.
+        An inventory is stored as a dictionary with the structure...
+
+        {
+        "class": "Inventory",
+        "name": "backpack",
+        "owner": "Beleg",
+        "items": [
+            {
+                "class": "Weapon",
+                "name": "Belthronding",
+                "owner": "Beleg",
+                "rarity": "Legendary",
+                "description": "A mighty bow made of black yew-wood",
+                "damage": 500,
+                "weapon_type": "ranged",
+                "active": false
+            },
+            {
+                "class": "Weapon",
+                "name": "Master Sword",
+                "owner": "Beleg",
+                "rarity": "Legendary",
+                "description": "A sword deserving of only the most skilled swordsman",
+                "damage": 300,
+                "weapon_type": "single-handed",
+                "active": false
+            },
+            }
+        
+        
+        """
         if isinstance(json_data, str):
             data = json.loads(json_data)
         else:
@@ -118,3 +159,17 @@ class Inventory:
             inv.items.append(obj)
             
         return inv
+    
+
+class myjsonEncoder(json.JSONEncoder):
+    '''Custem JSONEncoder that serializes the Inventory and all Item objects to JSON
+    
+    Overwrides default method:
+    - If the object is an inventory or item such as (Weapon, Shield, Potion) returns that object's to_json(), everything else is handled by the encoder
+    '''
+    def default(self, obj):
+        if isinstance(obj, Inventory):
+            return obj.to_json()
+        elif isinstance(obj, Item):
+            return obj.to_json()
+        return super().default(obj)

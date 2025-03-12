@@ -106,9 +106,64 @@ class Potion(Item):
         return potion_details
     
     def to_json(self):
-        '''Returns an JSON-encodable object with the classes information and all items stored inside. '''
-        pass
-    
-    def from_json(self):
-        """Creates new instances using the data from JSON strings."""
-        pass
+        '''Returns an JSON-encodable object with the classes information and all items stored inside.
+            returns dictionary items from Item class and potion class
+            {
+                Item class Data:
+                "class" : "Potion", 
+                "name": "item name", 
+                "owner": "item_owner", 
+                "rarity":"rarity_level", 
+                "description":"item_description" 
+
+                Potion Class Data:
+                "used_flag": "Item Used", 
+                "amount": "amount item buffs/heals", 
+                "duration":"how long item lasts for", 
+                "potion_type":"potion type 'attack', 'defense', 'hp'"
+            }
+        '''
+        json_data = super().to_json()
+        json_data.update({
+            "potion_type": self.potion_type,
+            "used": self.used_flag,
+            "amount": self.amount,
+            "duration": self.duration 
+        })
+        return json_data
+
+    @classmethod
+    def from_json(cls, json_data):
+        """Creates new instances using the data dumped from from JSON strings."""
+        import json
+        if isinstance(json_data, str):
+            data = json.loads(str)
+        else:
+            data = json_data
+
+        # Extract data
+        name = data.get("name")
+        potion_type = data.get("potion_type", "")
+        amount = data.get("amount", 30)
+        duration = data.get("duration", 30)
+        rarity = data.get("rarity", "Common")
+        owner = data.get("owner", "")
+        description = data.get("description", "")
+        used = data.get("used", False)
+        
+        # Create instance
+        potion = cls(
+            name,
+            potion_type,
+            amount,
+            duration,
+            rarity=rarity,
+            owner=owner,
+            description=description
+        )
+        
+        # Restore used state if it was used
+        if used:
+            potion.used_flag = True
+        
+        return potion

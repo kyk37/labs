@@ -86,7 +86,17 @@ class Item:
 
 
     def to_json(self):
-        '''Returns an JSON-encodable object with the classes information and all items stored inside. '''
+        '''Returns an JSON-encodable object with the classes information and all items stored inside. 
+            returns dictionary
+            {
+                "class" : "Item", 
+                "name": "item name", 
+                "owner": "item_owner", 
+                "rarity":"rarity_level", 
+                "description":"item_description" 
+            }
+
+        '''
         return {
             "class": self.__class__.__name__,
             "name" : self.name,
@@ -104,7 +114,7 @@ class Item:
         else:
             data = json_data
         
-        # Extract items
+        # Extract data
         name =  data.get("name")
         rarity = data.get("rarity", "Common")
         description = data.get("description", "")
