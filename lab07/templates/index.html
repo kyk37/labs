@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 07 QR Code Generator</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+    <form action="/form-handler" method="post">
+        <label for="data">Input your message:</label>
+        <input type="text" name="data" id="data" required>
+        <button type="submit">Generate QR Code</button>
+    </form>
+
+    {% if image %}
+        <h2>Your QR Code:</h2>
+        <img src="data:image/png;base64,{{ image }}" alt="Generated QR Code">
+        <p>Message!: {{ input_text }}</p>
+    {% endif %}
+</body>
+<footer>
+    © 2024 QR Code Generator <br>
+    Kyle Kessler
+</footer>
+</html>
