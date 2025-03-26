@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{tikz-uml}
+
+\begin{document}
+
+\begin{tikzpicture}
+  
+    \umlclass[x=-6, y=7]{StyleChecker}{
+	- file\_path: str \\
+	- tree:str\\
+	- report\_lines: list  \\
+	- source\_lines:list \\
+    }{
+	\# \_\_init\_\_(file\_path:str) \\
+	- \_parse\_file() \\
+	- \_analyze\_structure() \\
+	- \_get\_import\_string(node) \\
+	- \_check\_docstrings(class\_methfunc)\\
+	- \_check\_type\_annotations(no\_annotations,with\_annotations)\\
+	- \_is\_snake\_case(name) \\
+	- \_is\_camel\_case(name) \\
+	- \_is\_pascal\_case(name) \\
+	- \_is\_lower\_case(name) \\
+	- \_is\_special\_method(name)\\
+	- \_check\_naming\_conventions(classes, functionsout, class\_methfunc) \\
+	- \_generate\_report()\\
+	- run()
+	
+    }
+
+\end{tikzpicture}
+
+\end{document}
+
