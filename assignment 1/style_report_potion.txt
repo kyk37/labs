@@ -1,0 +1,170 @@
+File structure
+Total number of lines of code: 165
+
+List of packages imported:
+	from item import Item
+	from weapon import Weapon
+	from shield import Shield
+
+List of Classes:
+	Potion
+	Test_2
+	camelCase
+	PascalCase
+	snake_case
+	other_Case
+	lower
+
+List of Functions Inside Classes:
+Note: functions inside classes have Classname_functioname identification
+Class Potion: 
+	Potion___init__, 
+	Potion_get_type, 
+	Potion_get_amount, 
+	Potion_use, 
+	Potion_get_inventory, 
+	Potion_apply_weapon_boost, 
+	Potion_apply_defense_boost, 
+	Potion_apply_healing, 
+	Potion_from_ability, 
+	Potion___str__
+
+Class Test_2: 
+	Test_2___init__
+
+Class camelCase: 
+	camelCase___init__
+
+Class PascalCase: 
+	PascalCase___init__
+
+Class snake_case: 
+	snake_case___init__
+
+Class other_Case: 
+	other_Case___init__
+
+Class lower: 
+	lower___init__, 
+	lower_does_Not_Adhere, 
+	lower_camelCase
+
+
+List of Functions Outside Classes:
+	extra_function
+	single
+	annotation_function
+	doctype_function
+
+List of all Doc Strings and their associated class/method/function
+Potion: 
+	DocString not found.
+Test_2: 
+	DocString not found.
+extra_function: 
+	DocString not found.
+single: 
+	single word function
+annotation_function: 
+	DocString not found.
+doctype_function: 
+	YAY A DOCSTRING EXISTS HERE!!!
+camelCase: 
+	DocString not found.
+PascalCase: 
+	DocString not found.
+snake_case: 
+	DocString not found.
+other_Case: 
+	DocString not found.
+lower: 
+	DocString not found.
+lower___init__: 
+	DocString not found.
+Potion_get_type: 
+	doctype test 1
+Potion_get_amount: 
+	Annotation here!
+Potion_use: 
+	doctype test 2
+Potion_get_inventory: 
+	Finds and returns the inventory of the potion's owner.
+Potion_apply_weapon_boost: 
+	DocString not found.
+Potion_apply_defense_boost: 
+	DocString not found.
+Potion_apply_healing: 
+	DocString not found.
+Potion_from_ability: 
+	DocString not found.
+Potion___str__: 
+	Override item __str__ 
+lower___init__: 
+	DocString not found.
+lower___init__: 
+	Test for camelCase naming convention
+lower___init__: 
+	Test for PascalCase naming convention
+lower___init__: 
+	Test for snake_case naming convention
+lower___init__: 
+	Test for other cases of naming conventions
+lower___init__: 
+	Test for lower naming convention
+lower_does_Not_Adhere: 
+	does not adhere to lower_case_test
+lower_camelCase: 
+	Function inside class that applies to camelCase
+
+Type Annotation Check
+Without Annotations
+	Test_2___init__
+	other_Case___init__
+	single
+	lower___init__
+	camelCase___init__
+	lower_camelCase
+	lower_does_Not_Adhere
+	doctype_function
+	Potion_use
+	Potion___init__
+	snake_case___init__
+	Potion_get_type
+	Potion_get_inventory
+	Potion_apply_healing
+	Potion_apply_defense_boost
+	extra_function
+	PascalCase___init__
+	Potion_from_ability
+With_annotations:
+	Potion_apply_weapon_boost
+	Potion_get_amount
+	annotation_function
+	Potion___str__
+
+Naming Convention Check
+Class Naming Conventions:
+	snake_case: snake_case, lower
+	camelCase: camelCase
+	PascalCase: Potion, PascalCase
+	Other: Test_2, other_Case
+Warning: Multiple naming conventions detected in classes.
+
+Classes not adhering to CapitalizedWords (PascalCase) style:
+	Test_2
+	camelCase
+	snake_case
+	other_Case
+	lower
+
+Function/Method Naming Conventions:
+	snake_case: Potion_apply_defense_boost, Potion_apply_healing, Potion_apply_weapon_boost, Potion_from_ability, Potion_get_amount, Potion_get_inventory, Potion_get_type, Potion_use, annotation_function, doctype_function, extra_function, single
+	camelCase: lower_camelCase
+	special_case: PascalCase___init__, Potion___init__, Potion___str__, Test_2___init__, camelCase___init__, lower___init__, other_Case___init__, snake_case___init__
+	Other: lower_does_Not_Adhere
+Warning: Multiple naming conventions detected in functions/methods (excluding special_case).
+
+Functions and methods not adhering to lower_case_with_underscores style (~ignores special functions):
+	lower_camelCase
+	lower_does_Not_Adhere
+Note: Single lowercase words (e.g., 'lower') are considered valid.
