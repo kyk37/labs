@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>APOD - History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>View a Past APOD Image</h1>
+    <form method="get" action="{{ url_for('history') }}">
+        <label for="date">Select a date:</label>
+        <input type="date" id="date" name="date" min="1995-06-16" max="{{ today }}"> <!-- Nasa Image of the day only goes from June 16, 1995 - Current -->
+        <button type="submit">View</button>
+    </form>
+
+    {% if apod %}
+        {% if apod.error %}
+            <p style="color: red;">Error: {{ apod.error }}</p>
+        {% else %}
+            <hr>
+            <h2>{{ apod.title }}</h2>
+            <p><strong>Date:</strong> {{ apod.date }}</p>
+            <img src="{{ apod.url }}" alt="APOD image" width="600">
+            <p>{{ apod.explanation }}</p>
+            {% if apod.copyright %}
+                <p><em>© {{ apod.copyright }}</em></p>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

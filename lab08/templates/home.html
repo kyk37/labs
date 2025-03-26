@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>APOD - API Image of the Day!</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>NASA Astronomy Picture of the Day</h1>
+    <h2> The coolest picture you'll see all day!</h2>
+    <h3>{{ apod.title }}</h3>
+    <p><strong>Date:</strong> {{ apod.date }}</p>
+    <img src="{{ apod.url }}" alt="NASA APOD image" width="600">
+    <p>{{ apod.explanation }}</p>
+    {% if apod.copyright %}
+        <p><em>© {{ apod.copyright }}</em></p>
+    {% endif %}
+    <a href="/history">View History</a>
+</body>
+</html>
