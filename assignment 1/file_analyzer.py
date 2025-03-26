@@ -339,7 +339,6 @@ class StyleChecker:
             self._generate_report()
 
 if __name__ == "__main__":
-    #file_to_check = "potion.py"
-    file_to_check = "test_annot.py"
+    file_to_check = "potion.py"
     checker = StyleChecker(file_to_check)
     checker.run()
