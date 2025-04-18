@@ -1,0 +1,159 @@
+File structure
+Total number of lines of code: 181
+
+List of packages imported:
+	from item import Item
+	from weapon import Weapon
+	from shield import Shield
+
+List of Classes:
+	Potion
+	Test_2
+	camelCase
+	PascalCase
+	snake_case
+	other_Case
+	lower
+
+List of Functions Inside Classes:
+Class Potion:
+	Potion___init__, Potion_get_type, Potion_get_amount, Potion_use, Potion_get_inventory, Potion_apply_weapon_boost, Potion_apply_defense_boost, Potion_apply_healing, Potion_from_ability, Potion___str__
+Class Test_2:
+	Test_2___init__
+Class camelCase:
+	camelCase___init__
+Class PascalCase:
+	PascalCase___init__
+Class snake_case:
+	snake_case___init__
+Class other_Case:
+	other_Case___init__
+Class lower:
+	lower___init__, lower_does_Not_Adhere, lower_camelCase, lower_this_should_adhere, lower__is_snake_case
+
+List of Functions Outside Classes:
+	extra_function
+	single
+	annotation_function
+	doctype_function
+	_per_assignment_1_snake
+	MyPascal
+
+List of all Doc Strings and their associated class/method/function
+Potion: 
+	DocString not found.
+Test_2: 
+	DocString not found.
+extra_function: 
+	DocString not found.
+single: 
+	single word function
+annotation_function: 
+	DocString not found.
+doctype_function: 
+	YAY A DOCSTRING EXISTS HERE!!!
+camelCase: 
+	DocString not found.
+PascalCase: 
+	DocString not found.
+snake_case: 
+	DocString not found.
+other_Case: 
+	DocString not found.
+lower: 
+	DocString not found.
+_per_assignment_1_snake: 
+	this should be snake case
+MyPascal: 
+	This should be pascal Case
+lower___init__: 
+	DocString not found.
+Potion_get_type: 
+	doctype test 1
+Potion_get_amount: 
+	Annotation here!
+Potion_use: 
+	doctype test 2
+Potion_get_inventory: 
+	Finds and returns the inventory of the potion's owner.
+Potion_apply_weapon_boost: 
+	DocString not found.
+Potion_apply_defense_boost: 
+	DocString not found.
+Potion_apply_healing: 
+	DocString not found.
+Potion_from_ability: 
+	DocString not found.
+Potion___str__: 
+	Override item __str__ 
+lower___init__: 
+	DocString not found.
+lower___init__: 
+	Test for camelCase naming convention
+lower___init__: 
+	Test for PascalCase naming convention
+lower___init__: 
+	Test for snake_case naming convention
+lower___init__: 
+	Test for other cases of naming conventions
+lower___init__: 
+	Test for lower naming convention
+lower_does_Not_Adhere: 
+	does not adhere to lower_case_test
+lower_camelCase: 
+	Function inside class that applies to camelCase
+lower_this_should_adhere: 
+	should adhere to lower_case_test
+lower__is_snake_case: 
+	this should be snake case
+
+Type Annotation Check
+Without Annotations:
+	Potion_use
+	_per_assignment_1_snake
+	Potion_apply_defense_boost
+	lower_does_Not_Adhere
+	Potion_apply_healing
+	Potion_from_ability
+	extra_function
+	lower__is_snake_case
+	lower_this_should_adhere
+	MyPascal
+	Potion_get_type
+	Potion___init__
+	single
+	Potion_get_inventory
+	lower_camelCase
+	doctype_function
+With Annotations:
+	Potion___str__
+	Potion_get_amount
+	annotation_function
+	Potion_apply_weapon_boost
+
+Naming Convention Check
+Class Naming Conventions:
+	PascalCase: PascalCase, Potion
+	Other: Test_2, camelCase, lower, other_Case, snake_case
+	Warning: Multiple naming conventions detected in classes.
+
+Classes not adhering to CapitalizedWords (PascalCase):
+	Test_2
+	camelCase
+	lower
+	other_Case
+	snake_case
+
+Function/Method Naming Conventions:
+	snake_case: Potion_apply_defense_boost, Potion_apply_healing, Potion_apply_weapon_boost, Potion_from_ability, Potion_get_amount, Potion_get_inventory, Potion_get_type, Potion_use, _per_assignment_1_snake, annotation_function, doctype_function, extra_function, lower__is_snake_case, lower_this_should_adhere, single
+	special_case: PascalCase___init__, Potion___init__, Potion___str__, Test_2___init__, camelCase___init__, lower___init__, other_Case___init__, snake_case___init__
+	PascalCase: MyPascal
+	camelCase: lower_camelCase
+	Other: lower_does_Not_Adhere
+	Warning: Multiple naming conventions detected in functions/methods (excluding special_case).
+
+Functions and methods not adhering to lower_case_with_underscores style (excluding special methods):
+	MyPascal
+	lower_camelCase
+	lower_does_Not_Adhere
+	Note: Single lowercase words (e.g., 'lower') are considered valid; special methods (e.g., '__init__') are excluded.
